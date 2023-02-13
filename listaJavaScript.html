@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Creando una lista ul y li con JavaScript</title>
+    </head>
+    <body>
+        <div id="lista"></div>
+
+        <script>
+        const listaContainer = document.getElementById("lista");
+        const lista = document.createElement("ul");
+
+        const elementos = ["Elemento 1", "Elemento 2", "Elemento 3"];
+        elementos.forEach(function(elemento) {
+            const item = document.createElement("li");
+            item.innerHTML = elemento;
+            lista.appendChild(item);
+        });
+
+        listaContainer.appendChild(lista);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+            text-align: left;
+        }
+        .red {
+            color: red;
+        }
+        </style>
+    </head>
+    <body>
+        <table id="productTable">
+            <thead>
+                <tr>
+                    <th style="color:red">Marca</th>
+                    <th style="color:red">Stock</th>
+                    <th style="color:red">Precios</th>
+                </tr>
+                </thead>
+                <tbody id="productList">
+                </tbody>
+            </table>
+            
+            <button id="showProductsBtn">Mostrar productos</button>
+            <button id="hideProductsBtn">Ocultar productos</button>
+            
+            <script>
+            const products = [
+                { marca: "Nike", stock: 10, precios: 150.30 },
+                { marca: "Puma", stock: 5, precios: 80.5 },
+                { marca: "Adidad", stock: 8, precios: 70.41 },
+                { marca: "Converse", stock: 8, precios: 120.8 }
+            ];
+            
+            const productList = document.getElementById("productList");
+            const showProductsBtn = document.getElementById("showProductsBtn");
+            const hideProductsBtn = document.getElementById("hideProductsBtn");
+            const productTable = document.getElementById("productTable");
+            
+            showProductsBtn.addEventListener("click", function() {
+                productList.innerHTML = "";
+                for (let i = 0; i < products.length; i++) {
+                productList.innerHTML += `
+                    <tr>
+                    <td>${products[i].marca}</td>
+                    <td>${products[i].stock}</td>
+                    <td>${products[i].precios}</td>
+                    </tr>
+                `;
+                }
+                productTable.style.display = "table";
+            });
+            
+            hideProductsBtn.addEventListener("click", function() {
+                productTable.style.display = "none";
+            });
+            </script>
+    </body>
+</html>

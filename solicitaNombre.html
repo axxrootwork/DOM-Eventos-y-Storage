@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bienvenido</title>
+    </head>
+    <body>
+        <div id="nombreContainer" style="display: none;">
+        Bienvenido de nuevo, <span id="nombreUsuario"></span>
+        <br>
+        <button id="btnBorrar">Reiniciar</button>
+        </div>
+        <div id="formContainer">
+        <form>
+            <label for="nombre">Hola, me podrias dar tu nombre?</label>
+            <input type="text" id="nombre">
+            <input type="submit" value="Enviar">
+        </form>
+        </div>
+
+        <script>
+        const nombreContainer = document.getElementById("nombreContainer");
+        const formContainer = document.getElementById("formContainer");
+        const nombreUsuario = document.getElementById("nombreUsuario");
+        const btnBorrar = document.getElementById("btnBorrar");
+
+        const nombre = localStorage.getItem("nombre");
+        if (nombre) {
+            nombreUsuario.innerHTML = nombre;
+            nombreContainer.style.display = "block";
+            formContainer.style.display = "none";
+        } else {
+            nombreContainer.style.display = "none";
+            formContainer.style.display = "block";
+        }
+
+        document.querySelector("form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const nombre = document.getElementById("nombre").value;
+            nombreUsuario.innerHTML = nombre;
+            localStorage.setItem("nombre", nombre);
+            nombreContainer.style.display = "block";
+            formContainer.style.display = "none";
+        });
+
+        btnBorrar.addEventListener("click", function() {
+            localStorage.removeItem("nombre");
+            location.reload();
+        });
+        </script>
+    </body>
+</html>
